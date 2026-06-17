@@ -1,0 +1,739 @@
+/* ══════════════════════════════════════════════════════════════════
+   CV GENERATOR — STYLESHEET
+   Theme: Dark noir with red neon accents + podium background
+══════════════════════════════════════════════════════════════════ */
+
+/* ── Variables ─────────────────────────────────────────────────── */
+:root {
+    --bg:           #0a0a0a;
+    --surface:      rgba(10, 10, 10, 0.82);
+    --surface-2:    rgba(20, 20, 20, 0.9);
+    --border:       rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(224, 28, 46, 0.6);
+    --accent:       #e01c2e;
+    --accent-dark:  #a01020;
+    --accent-glow:  rgba(224, 28, 46, 0.35);
+    --text:         #f0f0f0;
+    --text-muted:   #888888;
+    --white:        #ffffff;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Rajdhani', sans-serif;
+    --radius:       6px;
+    --transition:   0.22s ease;
+    --card-shadow:  0 8px 40px rgba(0,0,0,0.7), 0 0 80px rgba(224,28,46,0.15);
+}
+
+/* ── Reset ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin:     0;
+    padding:    0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color:    #0a0a0a;
+    background-image:    url('bg.jpg');
+    background-size:     cover;
+    background-position: center bottom;
+    background-repeat:   no-repeat;
+    background-attachment: fixed;
+    color:       var(--text);
+    font-family: var(--font-body);
+    font-size:   16px;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height:  100vh;
+    overflow-x:  hidden;
+}
+
+/* Dark overlay so cards stay readable over the background */
+body::before {
+    content:    '';
+    position:   fixed;
+    inset:      0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index:    0;
+    pointer-events: none;
+}
+
+a {
+    color:           var(--accent);
+    text-decoration: none;
+    transition:      opacity var(--transition);
+}
+a:hover { opacity: 0.8; }
+
+/* ── Topbar ─────────────────────────────────────────────────────── */
+.topbar {
+    position:        fixed;
+    top:             0;
+    left:            0;
+    right:           0;
+    z-index:         200;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding:         0 36px;
+    height:          60px;
+    background:      rgba(5, 5, 5, 0.88);
+    border-bottom:   1px solid rgba(224,28,46,0.25);
+    backdrop-filter: blur(14px);
+}
+
+.topbar-brand {
+    font-family:    var(--font-display);
+    font-size:      30px;
+    letter-spacing: 4px;
+    color:          var(--white);
+}
+
+.topbar-user,
+.topbar-actions {
+    display:     flex;
+    align-items: center;
+    gap:         16px;
+    font-size:   13px;
+    color:       var(--text-muted);
+}
+
+/* ── Auth page layout ───────────────────────────────────────────── */
+.auth-wrapper {
+    position:        relative;
+    z-index:         10;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    min-height:      100vh;
+    padding:         40px 16px;
+}
+
+/* ── Tab switcher ───────────────────────────────────────────────── */
+.tab-switcher {
+    display:       flex;
+    border-radius: 4px;
+    overflow:      hidden;
+    margin-bottom: 20px;
+    border:        1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+}
+
+.tab {
+    padding:        9px 30px;
+    font-family:    var(--font-body);
+    font-size:      12px;
+    font-weight:    700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color:          var(--text-muted);
+    background:     rgba(15,15,15,0.8);
+    transition:     background var(--transition), color var(--transition);
+}
+
+.tab.active,
+.tab:hover {
+    background: var(--accent);
+    color:      var(--white);
+    opacity:    1;
+}
+
+/* ── Auth card ──────────────────────────────────────────────────── */
+.auth-card {
+    width:           100%;
+    max-width:       340px;
+    background:      rgba(10, 10, 10, 0.88);
+    border:          1px solid rgba(255,255,255,0.08);
+    border-radius:   var(--radius);
+    padding:         36px 30px;
+    backdrop-filter: blur(20px);
+    box-shadow:      var(--card-shadow);
+    animation:       slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Field groups ───────────────────────────────────────────────── */
+.field-group {
+    margin-bottom: 20px;
+}
+
+.field-label {
+    display:        block;
+    font-size:      11px;
+    font-weight:    700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color:          var(--text-muted);
+    margin-bottom:  7px;
+}
+
+.field-input {
+    width:         100%;
+    background:    transparent;
+    border:        none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0;
+    color:         var(--text);
+    font-family:   var(--font-body);
+    font-size:     15px;
+    font-weight:   500;
+    padding:       8px 2px;
+    transition:    border-color var(--transition);
+    outline:       none;
+    resize:        vertical;
+}
+
+.field-input:focus {
+    border-bottom-color: var(--accent);
+}
+
+.field-input::placeholder {
+    color:   var(--text-muted);
+    opacity: 0.5;
+}
+
+.field-textarea {
+    min-height:  90px;
+    line-height: 1.6;
+}
+
+/* ── Checkbox ───────────────────────────────────────────────────── */
+.checkbox-group {
+    margin-bottom: 22px;
+}
+
+.checkbox-label {
+    display:     flex;
+    align-items: center;
+    gap:         10px;
+    font-size:   13px;
+    color:       var(--text-muted);
+    cursor:      pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width:         16px;
+    height:        16px;
+    border:        1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    background:    transparent;
+    position:      relative;
+    flex-shrink:   0;
+    transition:    background var(--transition), border-color var(--transition);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+    background:   var(--accent);
+    border-color: var(--accent);
+}
+
+.checkmark::after {
+    content:     '';
+    position:    absolute;
+    left:        4px;
+    top:         1px;
+    width:       6px;
+    height:      10px;
+    border:      2px solid white;
+    border-top:  none;
+    border-left: none;
+    transform:   rotate(45deg);
+    opacity:     0;
+    transition:  opacity var(--transition);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark::after {
+    opacity: 1;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+.btn-primary {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             8px;
+    width:           100%;
+    padding:         12px 28px;
+    background:      var(--accent);
+    color:           var(--white);
+    font-family:     var(--font-body);
+    font-size:       13px;
+    font-weight:     700;
+    letter-spacing:  1.8px;
+    text-transform:  uppercase;
+    border:          none;
+    border-radius:   var(--radius);
+    cursor:          pointer;
+    transition:      background var(--transition), box-shadow var(--transition), transform 0.1s;
+}
+
+.btn-primary:hover {
+    background:  var(--accent-dark);
+    box-shadow:  0 0 24px var(--accent-glow);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary svg {
+    width:  16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.btn-sm {
+    width:     auto;
+    padding:   9px 18px;
+    font-size: 12px;
+}
+
+.btn-outline {
+    display:       inline-flex;
+    align-items:   center;
+    padding:       9px 18px;
+    border:        1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    color:         var(--text-muted);
+    font-family:   var(--font-body);
+    font-size:     12px;
+    font-weight:   600;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    transition:    border-color var(--transition), color var(--transition);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color:        var(--accent);
+    opacity:      1;
+}
+
+.btn-logout {
+    background:    transparent;
+    border:        1px solid rgba(255,255,255,0.12);
+    color:         var(--text-muted);
+    font-family:   var(--font-body);
+    font-size:     12px;
+    font-weight:   600;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    padding:       7px 14px;
+    border-radius: var(--radius);
+    cursor:        pointer;
+    transition:    border-color var(--transition), color var(--transition);
+}
+
+.btn-logout:hover {
+    border-color: var(--accent);
+    color:        var(--accent);
+}
+
+/* ── Switch link ────────────────────────────────────────────────── */
+.switch-link {
+    margin-top: 18px;
+    font-size:  13px;
+    color:      var(--text-muted);
+    text-align: center;
+}
+
+/* ── Alerts ─────────────────────────────────────────────────────── */
+.alert {
+    padding:       11px 14px;
+    border-radius: var(--radius);
+    font-size:     13px;
+    font-weight:   600;
+    margin-bottom: 18px;
+    letter-spacing:0.2px;
+}
+
+.alert-error {
+    background: rgba(224,28,46,0.1);
+    border:     1px solid rgba(224,28,46,0.35);
+    color:      #ff6b78;
+}
+
+.alert-success {
+    background: rgba(34,197,94,0.08);
+    border:     1px solid rgba(34,197,94,0.3);
+    color:      #4ade80;
+}
+
+/* ── CV Form page ───────────────────────────────────────────────── */
+.form-wrapper {
+    position:   relative;
+    z-index:    10;
+    max-width:  880px;
+    margin:     0 auto;
+    padding:    90px 24px 60px;
+}
+
+.page-title {
+    font-family:    var(--font-display);
+    font-size:      clamp(38px, 5vw, 58px);
+    letter-spacing: 4px;
+    margin-bottom:  28px;
+    color:          var(--white);
+    text-shadow:    0 0 30px rgba(224,28,46,0.3);
+}
+
+.accent { color: var(--accent); }
+
+.cv-form {
+    background:      rgba(8, 8, 8, 0.88);
+    border:          1px solid rgba(255,255,255,0.07);
+    border-radius:   var(--radius);
+    padding:         38px 36px;
+    backdrop-filter: blur(22px);
+    box-shadow:      var(--card-shadow);
+    animation:       slideUp 0.4s ease;
+}
+
+.form-grid {
+    display:               grid;
+    grid-template-columns: 1fr 220px;
+    gap:                   40px;
+    align-items:           start;
+}
+
+/* Photo column */
+.photo-col {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    padding-top:     4px;
+}
+
+.photo-upload-zone {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            12px;
+    cursor:         pointer;
+    position:       relative;
+}
+
+.photo-preview {
+    width:          160px;
+    height:         190px;
+    background:     rgba(255,255,255,0.03);
+    border:         2px dashed rgba(255,255,255,0.15);
+    border-radius:  var(--radius);
+    display:        flex;
+    align-items:    center;
+    justify-content:center;
+    overflow:       hidden;
+    transition:     border-color var(--transition), box-shadow var(--transition);
+}
+
+.photo-upload-zone:hover .photo-preview {
+    border-color: var(--accent);
+    box-shadow:   0 0 20px var(--accent-glow);
+}
+
+.photo-preview svg {
+    width:  60px;
+    height: 60px;
+    color:  rgba(255,255,255,0.2);
+}
+
+.photo-preview img {
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
+    border-radius: var(--radius);
+}
+
+.photo-hint {
+    font-size:  12px;
+    color:      var(--text-muted);
+    text-align: center;
+    line-height:1.4;
+}
+
+.photo-hint small {
+    font-size:    11px;
+    opacity:      0.55;
+    display:      block;
+    margin-top:   3px;
+}
+
+.photo-file-input {
+    position: absolute;
+    top:      0;
+    left:     0;
+    width:    160px;
+    height:   190px;
+    opacity:  0;
+    cursor:   pointer;
+}
+
+.form-actions {
+    margin-top:      28px;
+    display:         flex;
+    justify-content: flex-end;
+    border-top:      1px solid rgba(255,255,255,0.06);
+    padding-top:     28px;
+}
+
+.btn-submit {
+    width:   auto;
+    padding: 13px 44px;
+}
+
+/* ── CV Preview page ────────────────────────────────────────────── */
+.preview-wrapper {
+    position:   relative;
+    z-index:    10;
+    padding:    90px 24px 60px;
+    display:    flex;
+    justify-content:center;
+}
+
+/* ── The printable CV document ──────────────────────────────────── */
+.cv-document {
+    width:         210mm;
+    min-height:    297mm;
+    background:    #ffffff;
+    color:         #1a1a1a;
+    font-family:   'Crimson Pro', Georgia, serif;
+    border-radius: 2px;
+    box-shadow:    0 20px 80px rgba(0,0,0,0.8), 0 0 60px rgba(224,28,46,0.2);
+    overflow:      hidden;
+    animation:     slideUp 0.45s ease;
+}
+
+/* CV Header band */
+.cv-header {
+    display:     flex;
+    align-items: stretch;
+    background:  #111111;
+    color:       #ffffff;
+    min-height:  130px;
+}
+
+.cv-photo-wrap {
+    width:        110px;
+    flex-shrink:  0;
+    background:   #1a1a1a;
+    display:      flex;
+    align-items:  center;
+    justify-content: center;
+    padding:      16px;
+}
+
+.cv-photo {
+    width:         78px;
+    height:        78px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        2px solid var(--accent);
+}
+
+.cv-photo-placeholder {
+    width:         78px;
+    height:        78px;
+    border-radius: 50%;
+    background:    rgba(255,255,255,0.06);
+    border:        2px solid rgba(255,255,255,0.15);
+    display:       flex;
+    align-items:   center;
+    justify-content: center;
+}
+
+.cv-photo-placeholder svg {
+    width:  38px;
+    height: 38px;
+    color:  rgba(255,255,255,0.3);
+}
+
+.cv-identity {
+    padding:    24px 28px;
+    display:    flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:        5px;
+    border-left:3px solid var(--accent);
+}
+
+.cv-name {
+    font-family:    var(--font-display);
+    font-size:      28px;
+    letter-spacing: 3px;
+    color:          #ffffff;
+    line-height:    1;
+}
+
+.cv-titre {
+    font-family:    var(--font-body);
+    font-size:      14px;
+    font-weight:    600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:          var(--accent);
+}
+
+.cv-contact {
+    display:     flex;
+    align-items: center;
+    gap:         7px;
+    font-family: var(--font-body);
+    font-size:   13px;
+    color:       rgba(255,255,255,0.55);
+    margin-top:  4px;
+}
+
+.cv-contact svg {
+    width:      14px;
+    height:     14px;
+    flex-shrink:0;
+    color:      var(--accent);
+}
+
+/* CV body */
+.cv-body {
+    display:               grid;
+    grid-template-columns: 200px 1fr;
+    min-height:            calc(297mm - 130px);
+}
+
+.cv-aside {
+    background: #f4f4f4;
+    padding:    28px 20px;
+    border-right: 2px solid #e8e8e8;
+}
+
+.cv-main-col {
+    padding: 28px 28px;
+}
+
+.cv-section {
+    margin-bottom: 28px;
+}
+
+.cv-section-title {
+    font-family:    var(--font-display);
+    font-size:      16px;
+    letter-spacing: 2px;
+    color:          #111111;
+    border-bottom:  2px solid var(--accent);
+    padding-bottom: 5px;
+    margin-bottom:  12px;
+    text-transform: uppercase;
+}
+
+.cv-list {
+    list-style:  none;
+    padding:     0;
+    margin:      0;
+}
+
+.cv-list li {
+    font-size:     13.5px;
+    line-height:   1.7;
+    color:         #333333;
+    padding-left:  12px;
+    position:      relative;
+}
+
+.cv-list li::before {
+    content:   '▸';
+    position:  absolute;
+    left:      0;
+    color:     var(--accent);
+    font-size: 10px;
+    top:       5px;
+}
+
+.cv-list-experience li {
+    padding-bottom: 8px;
+    margin-bottom:  8px;
+    border-bottom:  1px solid #eeeeee;
+}
+
+.cv-list-experience li:last-child {
+    border-bottom: none;
+}
+
+.cv-empty {
+    color:      #aaaaaa !important;
+    font-style: italic;
+}
+
+.cv-empty::before {
+    display: none !important;
+}
+
+/* ── Enregistrer button (preview page) ──────────────────────────── */
+.preview-actions {
+    position:   fixed;
+    bottom:     32px;
+    right:      32px;
+    z-index:    300;
+    display:    flex;
+    gap:        12px;
+}
+
+/* ── Print styles ───────────────────────────────────────────────── */
+@media print {
+    body {
+        background: none !important;
+        margin:     0;
+        padding:    0;
+    }
+
+    body::before   { display: none !important; }
+    .topbar        { display: none !important; }
+    .preview-wrapper { padding: 0 !important; }
+    .preview-actions { display: none !important; }
+
+    .cv-document {
+        width:      210mm;
+        min-height: 297mm;
+        box-shadow: none;
+        border-radius: 0;
+        margin:     0;
+        padding:    0;
+    }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-col {
+        order: -1;
+    }
+
+    .cv-document {
+        width:    100%;
+        min-width:0;
+    }
+
+    .cv-body {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-aside {
+        border-right: none;
+        border-bottom: 2px solid #e8e8e8;
+    }
+
+    .topbar {
+        padding: 0 16px;
+    }
+}

@@ -1,0 +1,451 @@
+/* ══════════════════════════════════════════════════════════════════
+   CV GENERATOR SIMPLE — CSS
+   Fond : image podium rouge noir
+══════════════════════════════════════════════════════════════════ */
+
+:root {
+    --accent:      #e01c2e;
+    --accent-dark: #a01020;
+    --accent-glow: rgba(224, 28, 46, 0.3);
+    --text:        #f0f0f0;
+    --text-muted:  #888;
+    --border:      rgba(255,255,255,0.09);
+    --card-bg:     rgba(8, 8, 8, 0.88);
+    --radius:      6px;
+    --font-title:  'Bebas Neue', sans-serif;
+    --font-body:   'Rajdhani', sans-serif;
+    --shadow:      0 8px 40px rgba(0,0,0,0.7), 0 0 80px rgba(224,28,46,0.12);
+}
+
+/* ── Reset ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+/* ── Fond image ─────────────────────────────────────────────────── */
+body {
+    background:       #0a0a0a url('bg.jpg') center bottom / cover no-repeat fixed;
+    color:            var(--text);
+    font-family:      var(--font-body);
+    font-size:        16px;
+    font-weight:      500;
+    line-height:      1.5;
+    min-height:       100vh;
+}
+
+body::before {
+    content:    '';
+    position:   fixed;
+    inset:      0;
+    background: rgba(0,0,0,0.52);
+    z-index:    0;
+    pointer-events: none;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: .8; }
+
+/* ── Topbar ─────────────────────────────────────────────────────── */
+.topbar {
+    position:        fixed;
+    inset-inline:    0;
+    top:             0;
+    z-index:         200;
+    height:          58px;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding:         0 36px;
+    background:      rgba(4,4,4,0.9);
+    border-bottom:   1px solid rgba(224,28,46,0.2);
+    backdrop-filter: blur(14px);
+}
+
+.topbar-brand {
+    font-family:    var(--font-title);
+    font-size:      30px;
+    letter-spacing: 4px;
+    color:          #fff;
+}
+
+.topbar-actions {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+}
+
+.accent { color: var(--accent); }
+
+/* ── Boutons ────────────────────────────────────────────────────── */
+.btn-primary {
+    display:         inline-flex;
+    align-items:     center;
+    gap:             8px;
+    padding:         11px 28px;
+    background:      var(--accent);
+    color:           #fff;
+    font-family:     var(--font-body);
+    font-size:       13px;
+    font-weight:     700;
+    letter-spacing:  1.6px;
+    text-transform:  uppercase;
+    border:          none;
+    border-radius:   var(--radius);
+    cursor:          pointer;
+    transition:      background .2s, box-shadow .2s, transform .1s;
+    width:           100%;
+    justify-content: center;
+}
+
+.btn-primary:hover  { background: var(--accent-dark); box-shadow: 0 0 22px var(--accent-glow); }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary svg    { width: 16px; height: 16px; flex-shrink: 0; }
+
+.btn-sm   { width: auto; padding: 8px 18px; font-size: 12px; }
+.btn-submit { width: auto; padding: 13px 44px; }
+
+.btn-outline {
+    display:        inline-flex;
+    align-items:    center;
+    padding:        8px 18px;
+    border:         1px solid rgba(255,255,255,0.15);
+    border-radius:  var(--radius);
+    color:          var(--text-muted);
+    font-family:    var(--font-body);
+    font-size:      12px;
+    font-weight:    600;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    transition:     border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+/* ── Alertes ────────────────────────────────────────────────────── */
+.alert {
+    padding:       11px 14px;
+    border-radius: var(--radius);
+    font-size:     13px;
+    font-weight:   600;
+    margin-bottom: 20px;
+}
+.alert-error {
+    background: rgba(224,28,46,.1);
+    border:     1px solid rgba(224,28,46,.35);
+    color:      #ff6b78;
+}
+
+/* ── Page formulaire ────────────────────────────────────────────── */
+.form-wrapper {
+    position:   relative;
+    z-index:    10;
+    max-width:  860px;
+    margin:     0 auto;
+    padding:    86px 24px 60px;
+}
+
+.page-title {
+    font-family:    var(--font-title);
+    font-size:      clamp(38px, 5vw, 56px);
+    letter-spacing: 4px;
+    margin-bottom:  26px;
+    text-shadow:    0 0 30px rgba(224,28,46,.25);
+}
+
+/* ── Carte formulaire ───────────────────────────────────────────── */
+.cv-form {
+    background:      var(--card-bg);
+    border:          1px solid var(--border);
+    border-radius:   var(--radius);
+    padding:         36px;
+    backdrop-filter: blur(22px);
+    box-shadow:      var(--shadow);
+    animation:       fadeUp .35s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Grille 2 colonnes ──────────────────────────────────────────── */
+.form-grid {
+    display:               grid;
+    grid-template-columns: 1fr 210px;
+    gap:                   36px;
+    align-items:           start;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:     20px;
+}
+
+/* ── Champs ─────────────────────────────────────────────────────── */
+.field-group { margin-bottom: 18px; }
+
+.field-label {
+    display:        block;
+    font-size:      11px;
+    font-weight:    700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color:          var(--text-muted);
+    margin-bottom:  6px;
+}
+
+.field-input {
+    width:         100%;
+    background:    transparent;
+    border:        none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    color:         var(--text);
+    font-family:   var(--font-body);
+    font-size:     15px;
+    font-weight:   500;
+    padding:       8px 2px;
+    outline:       none;
+    resize:        vertical;
+    transition:    border-color .2s;
+}
+
+.field-input:focus         { border-bottom-color: var(--accent); }
+.field-input::placeholder  { color: var(--text-muted); opacity: .45; }
+.field-textarea            { min-height: 86px; line-height: 1.6; }
+
+/* ── Zone photo ─────────────────────────────────────────────────── */
+.photo-col { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+
+.photo-upload-zone {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            12px;
+    position:       relative;
+    cursor:         pointer;
+}
+
+.photo-preview {
+    width:           160px;
+    height:          190px;
+    background:      rgba(255,255,255,.03);
+    border:          2px dashed rgba(255,255,255,.14);
+    border-radius:   var(--radius);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    overflow:        hidden;
+    transition:      border-color .2s, box-shadow .2s;
+}
+
+.photo-upload-zone:hover .photo-preview {
+    border-color: var(--accent);
+    box-shadow:   0 0 18px var(--accent-glow);
+}
+
+.photo-preview svg  { width: 58px; height: 58px; color: rgba(255,255,255,.18); }
+.photo-preview img  { width: 100%; height: 100%; object-fit: cover; }
+
+.photo-hint         { font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.4; }
+.photo-hint small   { font-size: 11px; opacity: .5; display: block; margin-top: 3px; }
+
+.photo-file-input {
+    position: absolute;
+    top: 0; left: 0;
+    width: 160px; height: 190px;
+    opacity: 0; cursor: pointer;
+}
+
+/* ── Actions formulaire ─────────────────────────────────────────── */
+.form-actions {
+    display:         flex;
+    justify-content: flex-end;
+    margin-top:      26px;
+    padding-top:     26px;
+    border-top:      1px solid rgba(255,255,255,.06);
+}
+
+/* ── Page aperçu CV ─────────────────────────────────────────────── */
+.preview-wrapper {
+    position:        relative;
+    z-index:         10;
+    padding:         80px 24px 60px;
+    display:         flex;
+    justify-content: center;
+}
+
+/* ── Document CV (format A4) ────────────────────────────────────── */
+.cv-document {
+    width:         210mm;
+    min-height:    297mm;
+    background:    #ffffff;
+    color:         #1a1a1a;
+    font-family:   'Crimson Pro', Georgia, serif;
+    border-radius: 2px;
+    box-shadow:    0 20px 80px rgba(0,0,0,.8), 0 0 50px rgba(224,28,46,.18);
+    overflow:      hidden;
+    animation:     fadeUp .4s ease;
+}
+
+/* En-tête du CV */
+.cv-header {
+    display:     flex;
+    align-items: stretch;
+    background:  #111;
+    color:       #fff;
+    min-height:  128px;
+}
+
+.cv-photo-wrap {
+    width:           112px;
+    flex-shrink:     0;
+    background:      #1a1a1a;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         16px;
+}
+
+.cv-photo {
+    width:         78px;
+    height:        78px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        2px solid var(--accent);
+}
+
+.cv-photo-placeholder {
+    width:           78px;
+    height:          78px;
+    border-radius:   50%;
+    background:      rgba(255,255,255,.05);
+    border:          2px solid rgba(255,255,255,.14);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+}
+
+.cv-photo-placeholder svg { width: 38px; height: 38px; color: rgba(255,255,255,.25); }
+
+.cv-identity {
+    padding:        22px 28px;
+    display:        flex;
+    flex-direction: column;
+    justify-content:center;
+    gap:            5px;
+    border-left:    3px solid var(--accent);
+}
+
+.cv-name {
+    font-family:    var(--font-title);
+    font-size:      28px;
+    letter-spacing: 3px;
+    line-height:    1;
+    color:          #fff;
+}
+
+.cv-titre {
+    font-family:    var(--font-body);
+    font-size:      13px;
+    font-weight:    600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:          var(--accent);
+}
+
+.cv-contact {
+    display:     flex;
+    align-items: center;
+    gap:         7px;
+    font-family: var(--font-body);
+    font-size:   12px;
+    color:       rgba(255,255,255,.5);
+    margin-top:  3px;
+}
+
+.cv-contact svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--accent); }
+
+/* Corps du CV */
+.cv-body {
+    display:               grid;
+    grid-template-columns: 195px 1fr;
+    min-height:            calc(297mm - 128px);
+}
+
+.cv-aside {
+    background:   #f4f4f4;
+    padding:      26px 18px;
+    border-right: 2px solid #e8e8e8;
+}
+
+.cv-main-col { padding: 26px 28px; }
+
+.cv-section { margin-bottom: 26px; }
+
+.cv-section-title {
+    font-family:    var(--font-title);
+    font-size:      15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:          #111;
+    border-bottom:  2px solid var(--accent);
+    padding-bottom: 4px;
+    margin-bottom:  10px;
+}
+
+.cv-list      { list-style: none; }
+
+.cv-list li {
+    font-size:   13px;
+    line-height: 1.75;
+    color:       #333;
+    padding-left:12px;
+    position:    relative;
+}
+
+.cv-list li::before {
+    content:   '▸';
+    position:  absolute;
+    left:      0;
+    color:     var(--accent);
+    font-size: 10px;
+    top:       5px;
+}
+
+.cv-list-experience li {
+    padding-bottom: 7px;
+    margin-bottom:  7px;
+    border-bottom:  1px solid #eee;
+}
+.cv-list-experience li:last-child { border-bottom: none; }
+
+.cv-empty            { color: #aaa !important; font-style: italic; }
+.cv-empty::before    { display: none !important; }
+
+/* ── Bouton flottant ────────────────────────────────────────────── */
+.preview-actions {
+    position: fixed;
+    bottom:   28px;
+    right:    28px;
+    z-index:  300;
+}
+
+.preview-actions .btn-primary { width: auto; padding: 12px 30px; }
+
+/* ── Impression ─────────────────────────────────────────────────── */
+@media print {
+    body, body::before { background: none !important; }
+    .topbar, .preview-actions { display: none !important; }
+    .preview-wrapper { padding: 0 !important; }
+    .cv-document     { box-shadow: none; border-radius: 0; margin: 0; width: 210mm; min-height: 297mm; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+    .form-grid  { grid-template-columns: 1fr; }
+    .form-row   { grid-template-columns: 1fr; }
+    .photo-col  { order: -1; }
+    .cv-document{ width: 100%; }
+    .cv-body    { grid-template-columns: 1fr; }
+    .cv-aside   { border-right: none; border-bottom: 2px solid #e8e8e8; }
+    .topbar     { padding: 0 16px; }
+}

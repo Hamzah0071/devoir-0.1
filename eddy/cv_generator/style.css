@@ -1,0 +1,301 @@
+/* ── Reset & Base ─────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+}
+
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Container ────────────────────────────────────────────────── */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.container.small {
+    max-width: 500px;
+}
+
+/* ── Formulaires ──────────────────────────────────────────────── */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+}
+
+.req { color: #ef4444; }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+textarea { resize: vertical; }
+
+button[type="submit"], .btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    text-align: center;
+    display: inline-block;
+}
+
+button[type="submit"]:hover, .btn:hover {
+    background: #2563eb;
+    text-decoration: none;
+}
+
+.btn-small {
+    background: #e5e7eb;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.erreur {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ── Titres ───────────────────────────────────────────────────── */
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* ── Dashboard ────────────────────────────────────────────────── */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.dash-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cv-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cv-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.cv-photo-mini {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.cv-photo-mini.placeholder {
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.cv-info { flex: 1; }
+.cv-info h3 { font-size: 16px; margin-bottom: 4px; }
+.cv-info small { color: #94a3b8; font-size: 13px; }
+
+.cv-actions {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.cv-actions a:last-child { color: #ef4444; }
+
+.vide {
+    text-align: center;
+    color: #94a3b8;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+/* ── Photo upload ─────────────────────────────────────────────── */
+.photo-zone {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.apercu-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.apercu-photo.placeholder {
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+/* ── Retour ───────────────────────────────────────────────────── */
+.retour {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.cv-actions-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* ── CV Preview ───────────────────────────────────────────────── */
+.cv-preview {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.cv-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.cv-photo-wrapper {}
+
+.cv-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.3);
+}
+
+.cv-photo.placeholder {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    border: 4px solid rgba(255,255,255,0.2);
+}
+
+.cv-identite h1 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.cv-identite h2 {
+    font-size: 16px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.cv-contact {
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.cv-corps {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cv-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cv-section p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .cv-header { flex-direction: column; text-align: center; padding: 24px; }
+    .dash-header, .dash-top, .cv-actions-top { flex-direction: column; gap: 12px; }
+}
